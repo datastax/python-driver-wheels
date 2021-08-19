@@ -1,0 +1,86 @@
+env:
+  global:
+  - REPO_DIR=python-driver
+  - BUILD_COMMIT=15d715f4e686032b02ce785eca1d176d2b25e32b
+  - BUILD_DEPENDS="geomet>=0.1,<0.3 six>=1.9 futures<=2.2.0 Cython>=0.20,!=0.25,<0.30"
+  - TEST_DEPENDS=""
+  - UNICODE_WIDTH=32
+language: python
+python: 3.5
+os: linux
+dist: xenial
+services: docker
+jobs:
+  include:
+  - env:
+    - MB_PYTHON_VERSION=2.7
+  - env:
+    - MB_PYTHON_VERSION=2.7
+    - UNICODE_WIDTH=16
+  - env:
+    - MB_PYTHON_VERSION=2.7
+    - PLAT=i686
+  - env:
+    - MB_PYTHON_VERSION=2.7
+    - PLAT=i686
+    - UNICODE_WIDTH=16
+  - env:
+    - MB_PYTHON_VERSION=3.5
+  - env:
+    - MB_PYTHON_VERSION=3.5
+    - PLAT=i686
+  - env:
+    - MB_PYTHON_VERSION=3.6
+  - env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
+  - env:
+    - MB_PYTHON_VERSION=3.7
+  - env:
+    - MB_PYTHON_VERSION=3.7
+    - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+  - env:
+    - MB_PYTHON_VERSION=3.8
+  - env:
+    - MB_PYTHON_VERSION=3.8
+    - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=2.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.5
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.8
+script: bash build_wheel.sh
