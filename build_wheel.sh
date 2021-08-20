@@ -3,7 +3,7 @@
 . multibuild/common_utils.sh
 . multibuild/travis_steps.sh
 
-echo "### Platform is $PLAT ###"
+echo "Platform is $PLAT"
 
 before_install
 clean_code $REPO_DIR $BUILD_COMMIT
