@@ -13,28 +13,6 @@ services: docker
 jobs:
   include:
   - env:
-    - MB_PYTHON_VERSION=2.7
-  - env:
-    - MB_PYTHON_VERSION=2.7
-    - UNICODE_WIDTH=16
-  - env:
-    - MB_PYTHON_VERSION=2.7
-    - PLAT=i686
-  - env:
-    - MB_PYTHON_VERSION=2.7
-    - PLAT=i686
-    - UNICODE_WIDTH=16
-  - env:
-    - MB_PYTHON_VERSION=3.5
-  - env:
-    - MB_PYTHON_VERSION=3.5
-    - PLAT=i686
-  - env:
-    - MB_PYTHON_VERSION=3.6
-  - env:
-    - MB_PYTHON_VERSION=3.6
-    - PLAT=i686
-  - env:
     - MB_PYTHON_VERSION=3.7
   - env:
     - MB_PYTHON_VERSION=3.7
@@ -48,9 +26,6 @@ jobs:
     - PLAT=aarch64
   - env:
     - MB_PYTHON_VERSION=3.8
-  - env:
-    - MB_PYTHON_VERSION=3.8
-    - PLAT=i686
   - arch: arm64
     os: linux
     services: docker
@@ -58,21 +33,6 @@ jobs:
     - MB_PYTHON_VERSION=3.8
     - MB_ML_VER=2014
     - PLAT=aarch64
-  - os: osx
-    osx_image: xcode11
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=2.7
-  - os: osx
-    osx_image: xcode11
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.5
-  - os: osx
-    osx_image: xcode11
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.6
   - os: osx
     osx_image: xcode11
     language: generic
