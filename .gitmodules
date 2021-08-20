@@ -1,0 +1,6 @@
+[submodule "multibuild"]
+	path = multibuild
+	url = https://github.com/matthew-brett/multibuild.git
+[submodule "python-driver"]
+	path = python-driver
+	url = git@github.com:datastax/python-driver.git
