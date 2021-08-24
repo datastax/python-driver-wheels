@@ -12,11 +12,6 @@ dist: xenial
 services: docker
 jobs:
   include:
-  - env:
-    - MB_PYTHON_VERSION=3.7
-  - env:
-    - MB_PYTHON_VERSION=3.7
-    - PLAT=i686
   - arch: arm64
     os: linux
     services: docker
@@ -24,8 +19,7 @@ jobs:
     - MB_PYTHON_VERSION=3.7
     - MB_ML_VER=2014
     - PLAT=aarch64
-  - env:
-    - MB_PYTHON_VERSION=3.8
+    - DOCKER_TEST_IMAGE=ubuntu/trusty
   - arch: arm64
     os: linux
     services: docker
@@ -33,14 +27,5 @@ jobs:
     - MB_PYTHON_VERSION=3.8
     - MB_ML_VER=2014
     - PLAT=aarch64
-  - os: osx
-    osx_image: xcode11
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.7
-  - os: osx
-    osx_image: xcode11
-    language: generic
-    env:
-    - MB_PYTHON_VERSION=3.8
+    - DOCKER_TEST_IMAGE=ubuntu/trusty
 script: bash build_wheel.sh
