@@ -19,7 +19,7 @@ jobs:
     - MB_PYTHON_VERSION=3.7
     - MB_ML_VER=2014
     - PLAT=aarch64
-    - DOCKER_TEST_IMAGE=ubuntu:trusty
+    - DOCKER_TEST_IMAGE=multibuild/xenial_aarch64
   - arch: arm64
     os: linux
     services: docker
@@ -27,5 +27,5 @@ jobs:
     - MB_PYTHON_VERSION=3.8
     - MB_ML_VER=2014
     - PLAT=aarch64
-    - DOCKER_TEST_IMAGE=ubuntu:trusty
+    - DOCKER_TEST_IMAGE=multibuild/xenial_aarch64
 script: bash build_wheel.sh
