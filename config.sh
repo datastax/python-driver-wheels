@@ -13,6 +13,14 @@ function pre_build {
     make
     make install
     popd
+
+    PYTHON_MAJOR_MINOR=`python -c 'import sys; print(str(sys.version_info[0])+"."+str(sys.version_info[1]))'`
+    if [[ $PYTHON_MAJOR_MINOR == "2.7" || $PYTHON_MAJOR_MINOR == "3.5" ]]; then
+	echo "Python version $PYTHON_MAJOR_MINOR needs a custom pip install"
+	PIP_URL = "https://bootstrap.pypa.io/pip/$PYTHON_MAJOR_MINOR/get-pip.py"
+	echo "Trying URL $PIP_URL"
+	curl $PIP_URL | sudo python -
+    fi
 }
 
 function run_tests {
