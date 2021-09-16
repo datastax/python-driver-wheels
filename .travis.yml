@@ -5,6 +5,7 @@ env:
   - BUILD_DEPENDS="geomet>=0.1,<0.3 six>=1.9 futures<=2.2.0 Cython>=0.20,!=0.25,<0.30"
   - TEST_DEPENDS=""
   - UNICODE_WIDTH=32
+  - MB_ML_VER=1
 language: python
 python: 3.5
 os: linux
