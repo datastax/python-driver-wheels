@@ -9,10 +9,16 @@ function pre_build {
     curl -o libev-${LIBEV_VERSION}.tar.gz http://dist.schmorp.de/libev/Attic/libev-${LIBEV_VERSION}.tar.gz
     tar -xzf libev-${LIBEV_VERSION}.tar.gz
     pushd libev-${LIBEV_VERSION}/
-    ./configure
-    make
-    make install
-    popd
+    if (./configure); then
+	echo "Build succeeded, continuing with install"
+        make
+        make install
+        popd
+    else
+	echo "Build failed, trying to display config.log"
+        cat config.log
+	exit 1
+    fi
 }
 
 function run_tests {

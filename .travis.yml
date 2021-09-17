@@ -5,6 +5,7 @@ env:
   - BUILD_DEPENDS="geomet>=0.1,<0.3 six>=1.9 futures<=2.2.0 Cython>=0.20,!=0.25,<0.30"
   - TEST_DEPENDS=""
   - UNICODE_WIDTH=32
+  - MB_ML_VER=1
 language: python
 python: 3.5
 os: linux
@@ -12,6 +13,42 @@ dist: xenial
 services: docker
 jobs:
   include:
+  - os: linux
+    env: MB_PYTHON_VERSION=2.7
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=2.7
+    - UNICODE_WIDTH=16
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=2.7
+    - PLAT=i686
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=2.7
+    - PLAT=i686
+    - UNICODE_WIDTH=16
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.5
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.5
+    - PLAT=i686
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - PLAT=i686
   - arch: arm64
     os: linux
     services: docker
@@ -20,6 +57,13 @@ jobs:
     - MB_ML_VER=2014
     - PLAT=aarch64
     - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - PLAT=i686
   - arch: arm64
     os: linux
     services: docker
@@ -28,4 +72,31 @@ jobs:
     - MB_ML_VER=2014
     - PLAT=aarch64
     - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=2.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_OSX_VERSION=10.6
+    - PLAT=x86_64
+    - MB_PYTHON_VERSION=3.5
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.8
 script: bash build_wheel.sh
