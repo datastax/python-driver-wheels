@@ -45,5 +45,6 @@ jobs:
     language: generic
     env:
     - MB_PYTHON_OSX_VERSION=10.6
+    - PLAT=x86_64
     - MB_PYTHON_VERSION=3.5
 script: bash build_wheel.sh
