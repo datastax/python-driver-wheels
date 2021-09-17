@@ -11,9 +11,16 @@ function pre_build {
     pushd libev-${LIBEV_VERSION}/
     ./configure
     make
-    make install
-    cat config.log
-    popd
+    MAKE_RV=$?
+    if [ $MAKE_RV == 0 ]; then
+	echo "Build succeeded, continuing with install"
+        make install
+        popd
+    else
+	echo "Build failed, trying to display config.log"
+        cat config.log
+	exit $MAKE_RV
+    fi
 }
 
 function run_tests {
