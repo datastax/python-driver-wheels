@@ -12,6 +12,7 @@ function pre_build {
     ./configure
     make
     make install
+    cat config.log
     popd
 }
 
