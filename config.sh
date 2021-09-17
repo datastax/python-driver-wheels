@@ -9,9 +9,9 @@ function pre_build {
     curl -o libev-${LIBEV_VERSION}.tar.gz http://dist.schmorp.de/libev/Attic/libev-${LIBEV_VERSION}.tar.gz
     tar -xzf libev-${LIBEV_VERSION}.tar.gz
     pushd libev-${LIBEV_VERSION}/
-    ./configure
-    if (make); then
+    if (./configure); then
 	echo "Build succeeded, continuing with install"
+        make
         make install
         popd
     else
