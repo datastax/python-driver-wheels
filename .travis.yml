@@ -35,6 +35,43 @@ jobs:
     env:
     - MB_PYTHON_VERSION=3.5
     - PLAT=i686
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.6
+    - PLAT=i686
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.7
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.8
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
   - os: osx
     osx_image: xcode11
     language: generic
@@ -47,4 +84,19 @@ jobs:
     - MB_PYTHON_OSX_VERSION=10.6
     - PLAT=x86_64
     - MB_PYTHON_VERSION=3.5
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.6
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.8
 script: bash build_wheel.sh
