@@ -10,16 +10,14 @@ function pre_build {
     tar -xzf libev-${LIBEV_VERSION}.tar.gz
     pushd libev-${LIBEV_VERSION}/
     ./configure
-    make
-    MAKE_RV=$?
-    if [ $MAKE_RV == 0 ]; then
+    if (make); then
 	echo "Build succeeded, continuing with install"
         make install
         popd
     else
 	echo "Build failed, trying to display config.log"
         cat config.log
-	exit $MAKE_RV
+	exit 1
     fi
 }
 
