@@ -82,9 +82,11 @@ jobs:
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.10
+    - MB_ML_VER=2010
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.10
+    - MB_ML_VER=2010
     - PLAT=i686
   - os: osx
     osx_image: xcode11
