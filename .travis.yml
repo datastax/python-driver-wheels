@@ -50,6 +50,14 @@ jobs:
     env:
     - MB_PYTHON_VERSION=3.9
     - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.9
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
   - os: linux
     env:
     - MB_PYTHON_VERSION=3.10
@@ -59,4 +67,29 @@ jobs:
     - MB_PYTHON_VERSION=3.10
     - MB_ML_VER=2010
     - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.10
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.11
+    - MB_ML_VER=2014
+  - os: linux
+    env:
+    - MB_PYTHON_VERSION=3.11
+    - MB_ML_VER=2014
+    - PLAT=i686
+  - arch: arm64
+    os: linux
+    services: docker
+    env:
+    - MB_PYTHON_VERSION=3.11
+    - MB_ML_VER=2014
+    - PLAT=aarch64
+    - DOCKER_TEST_IMAGE=multibuild/xenial_arm64v8
 script: bash build_wheel.sh
