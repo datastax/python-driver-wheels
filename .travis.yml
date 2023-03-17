@@ -68,7 +68,6 @@ jobs:
     - MB_PYTHON_VERSION=3.10
     - MB_ML_VER=2010
     - PLAT=i686
-    - DOCKER_TEST_IMAGE=multibuild/focal_x86_64
   - arch: arm64
     os: linux
     services: docker
@@ -87,7 +86,6 @@ jobs:
     - MB_PYTHON_VERSION=3.11
     - MB_ML_VER=2014
     - PLAT=i686
-    - DOCKER_TEST_IMAGE=multibuild/focal_x86_64
   - arch: arm64
     os: linux
     services: docker
