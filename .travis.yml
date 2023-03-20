@@ -94,4 +94,29 @@ jobs:
     - MB_ML_VER=2014
     - PLAT=aarch64
     - DOCKER_TEST_IMAGE=multibuild/focal_arm64v8
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.7
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.8
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.9
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.10
+  - os: osx
+    osx_image: xcode11
+    language: generic
+    env:
+    - MB_PYTHON_VERSION=3.11
 script: bash build_wheel.sh
