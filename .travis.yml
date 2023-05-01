@@ -11,6 +11,8 @@ python: 3.5
 os: linux
 dist: xenial
 services: docker
+before_install:
+  - sudo apt-get -y install libffi libffi-dev
 jobs:
   include:
   - os: linux
