@@ -1,8 +1,8 @@
 env:
   global:
   - REPO_DIR=python-driver
-  - BUILD_COMMIT=f5001b8759d34896a1899b791a5ca57db8ba8069
-  - BUILD_DEPENDS="geomet>=0.1,<0.3 six>=1.9 futures<=2.2.0 Cython>=0.20,!=0.25,<0.30"
+  - BUILD_COMMIT=ad400562efe6ffde9d6b8d4e7a4255e7751015f2
+  - BUILD_DEPENDS="cryptography>=35.0 geomet>=0.1,<0.3 six>=1.9 futures<=2.2.0 Cython>=0.20,!=0.25,<0.30"
   - TEST_DEPENDS=""
   - UNICODE_WIDTH=32
   - MB_ML_VER=1
