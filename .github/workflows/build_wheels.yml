@@ -1,0 +1,35 @@
+name: Build wheels
+
+on: [workflow_dispatch]
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2019, macos-11]
+    env:
+      CIBW_BUILD: cp37-* cp38-* cp39-* cp310-* cp311-*
+      CIBW_SKIP: "*musllinux*"
+      CIBW_ARCHS_MACOS: x86_64 arm64 universal2
+      CIBW_ARCHS_LINUX: x86_64 i686 aarch64
+      CIBW_TEST_REQUIRES: nose mock pure-sasl eventlet
+      CIBW_TEST_COMMAND: echo "wheel is installed"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Set up QEMU
+        if: runner.os == 'Linux'
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: linux/arm64
+
+      - name: Build wheels
+        run: cd python-driver && pipx run cibuildwheel==2.12.1
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: python-driver/wheelhouse/*.whl
