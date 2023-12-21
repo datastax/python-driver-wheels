@@ -1,0 +1,25 @@
+name: Build wheels
+
+on: [workflow_dispatch]
+
+jobs:
+  build_wheels_mac:
+    name: Build wheels on macos-11
+    runs-on: macos-11
+    env:
+      CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+      CIBW_SKIP: "*musllinux*"
+      CIBW_ARCHS_MACOS: x86_64 arm64 universal2
+      CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
+      CIBW_TEST_COMMAND: echo "wheel is installed"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Build wheels
+        run: cd python-driver && pipx run cibuildwheel==2.12.1
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: python-driver/wheelhouse/*.whl
