@@ -12,7 +12,7 @@ jobs:
       CIBW_ARCHS_LINUX: x86_64 aarch64
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
-      CIBW_BEFORE_ALL: yum install -y libev4 libev-dev
+      CIBW_BEFORE_ALL: yum install -y libev libev-dev
     steps:
       - uses: actions/checkout@v3
         with:
