@@ -12,12 +12,11 @@ jobs:
       CIBW_ARCHS_LINUX: x86_64 aarch64
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
+      CIBW_BEFORE_ALL: sudo apt-get install libev4 libev-dev
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Install dependencies
-        run: sudo apt-get install libev4 libev-dev
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         with:
