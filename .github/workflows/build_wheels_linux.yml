@@ -7,7 +7,7 @@ jobs:
     name: Build wheels on ubuntu-20.04
     runs-on: ubuntu-20.04
     env:
-      CIBW_BUILD: cp38-*
+      CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_ARCHS_LINUX: x86_64 aarch64
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
