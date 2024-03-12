@@ -12,6 +12,7 @@ jobs:
       CIBW_ARCHS_MACOS: x86_64 arm64 universal2
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
+      CIBW_BEFORE_ALL: brew install libev
     steps:
       - uses: actions/checkout@v3
         with:
