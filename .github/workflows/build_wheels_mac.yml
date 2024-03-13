@@ -15,7 +15,10 @@ jobs:
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
-      CIBW_BEFORE_ALL: brew install libev
+      CIBW_BEFORE_ALL: >
+        pip install pipx
+        pipx ensurepath
+        brew install libev
     steps:
       - uses: actions/checkout@v3
         with:
