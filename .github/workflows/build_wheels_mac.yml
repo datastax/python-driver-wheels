@@ -16,15 +16,11 @@ jobs:
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: brew install libev
-      CIBW_BEFORE_BUILD: >
-        brew install pipx &&
-        pipx ensurepath
     steps:
       - uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Build wheels
-        run: cd python-driver && pipx run cibuildwheel==2.16.2
+      - uses: pypa/cibuildwheel@v2.17.0
       - uses: actions/upload-artifact@v3
         with:
           path: python-driver/wheelhouse/*.whl
