@@ -16,7 +16,7 @@ jobs:
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: >
-        pip install pipx &&
+        brew install pipx &&
         pipx ensurepath &&
         brew install libev
     steps:
