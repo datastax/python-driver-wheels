@@ -13,17 +13,17 @@ jobs:
     env:
       CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
       CIBW_SKIP: "*musllinux*"
-      CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
+      CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: brew install libev
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: pypa/cibuildwheel@v2.17.0
+      - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
+          name: cibw-wheels-mac-${{ matrix.os }}
           path: ./wheelhouse/*.whl
