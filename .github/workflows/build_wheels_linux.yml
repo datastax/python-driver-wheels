@@ -12,7 +12,7 @@ jobs:
       CIBW_ARCHS_LINUX: x86_64
       CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
-      CIBW_BEFORE_ALL: apt-get install libev libev-dev
+      CIBW_BEFORE_ALL: yum install -y libev libev-devel
       CIBW_ENVIRONMENT: CFLAGS='-s'
     steps:
       - uses: actions/checkout@v4
@@ -22,7 +22,7 @@ jobs:
         uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/arm64
-      - uses: pypa/cibuildwheel@v2.17.0
+      - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
       - uses: actions/upload-artifact@v4
