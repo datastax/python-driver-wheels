@@ -20,7 +20,7 @@ jobs:
         gzip -dc libev-4.33.tar.gz | tar xf - &&
         cd libev-4.33 &&
         ./configure &&
-        make install
+        sudo make install
     steps:
       - uses: actions/checkout@v4
         with:
