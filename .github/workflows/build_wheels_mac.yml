@@ -10,8 +10,16 @@ jobs:
       matrix:
         # macos-13 == Intel, macos-14 == ARM
         os: [macos-13, macos-14]
+	min_version: [10.9, 11.0]
+	exclude:
+          # Always try for the maximal min version for x86_64 builds
+          - os: macos-13
+            min_version: 11.0
+          # ARM builds require an OSX version of at least 11.0
+          - os: macos-14
+            min_version: 10.9
     env:
-      CIBW_ENVIRONMENT: CFLAGS="-mmacosx-version-min=10.9"
+      CIBW_ENVIRONMENT: CFLAGS="-mmacosx-version-min=${{ matrix.min_version }}"
       CIBW_BUILD: cp38-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
