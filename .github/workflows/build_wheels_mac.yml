@@ -11,13 +11,13 @@ jobs:
         # macos-13 == Intel, macos-14 == ARM
         os: [macos-13, macos-14]
     env:
-      CIBW_ENVIRONMENT: MACOSX_DEPLOYMENT_TARGET=10.9
+      CIBW_ENVIRONMENT: CFLAGS="-mmacosx-version-min=10.9"
       CIBW_BUILD: cp38-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: >
-        CFLAGS="-mmacosx-version-min=10.9" curl -O http://dist.schmorp.de/libev/libev-4.33.tar.gz &&
+        curl -O http://dist.schmorp.de/libev/libev-4.33.tar.gz &&
         gzip -dc libev-4.33.tar.gz | tar xf - &&
         cd libev-4.33 &&
         ./configure &&
