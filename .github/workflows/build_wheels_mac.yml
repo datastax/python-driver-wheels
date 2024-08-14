@@ -21,7 +21,6 @@ jobs:
         cd libev-4.33
         ./configure
         make install
-brew install --build-from-source libev
     steps:
       - uses: actions/checkout@v4
         with:
