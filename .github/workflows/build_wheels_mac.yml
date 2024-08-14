@@ -16,10 +16,10 @@ jobs:
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: >
-        curl -O http://dist.schmorp.de/libev/libev-4.33.tar.gz
-        gzip -dc libev-4.33.tar.gz | tar xf -
-        cd libev-4.33
-        ./configure
+        curl -O http://dist.schmorp.de/libev/libev-4.33.tar.gz &&
+        gzip -dc libev-4.33.tar.gz | tar xf - &&
+        cd libev-4.33 &&
+        ./configure &&
         make install
     steps:
       - uses: actions/checkout@v4
