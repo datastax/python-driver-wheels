@@ -7,7 +7,7 @@ jobs:
     name: Build wheels on windows-2022
     runs-on: windows-2022
     env:
-      CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
+      CIBW_BUILD: cp38-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
