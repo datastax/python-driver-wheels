@@ -10,7 +10,7 @@ jobs:
       matrix:
         # macos-13 == Intel, macos-14 == ARM
         os: [macos-13, macos-14]
-	min_version: [10.9, 11.0]
+        min_version: [10.9, 11.0]
 	exclude:
           # Always try for the maximal min version for x86_64 builds
           - os: macos-13
