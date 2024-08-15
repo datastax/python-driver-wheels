@@ -10,20 +10,22 @@ jobs:
       CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_ARCHS_LINUX: x86_64 aarch64
-      CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
+      CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: yum install -y libev libev-devel
       CIBW_ENVIRONMENT: CFLAGS='-s'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
         with:
           platforms: linux/arm64
-      - name: Build wheels
-        run: cd python-driver && pipx run cibuildwheel==2.16.2
-      - uses: actions/upload-artifact@v3
+      - uses: pypa/cibuildwheel@v2.19.2
         with:
-          path: python-driver/wheelhouse/*.whl
+          package-dir: ./python-driver
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-linux
+          path: ./wheelhouse/*.whl
