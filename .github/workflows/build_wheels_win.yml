@@ -27,5 +27,5 @@ jobs:
           path: python-driver/wheelhouse/*.whl
       - uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheels-linux
+          name: cibw-wheels-win
           path: ./wheelhouse/*.whl
