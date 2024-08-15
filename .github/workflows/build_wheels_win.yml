@@ -16,7 +16,7 @@ jobs:
         with:
           submodules: true
       - name: Install libev
-        run: vcpkg install libev
+        run: vcpkg install
       - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
