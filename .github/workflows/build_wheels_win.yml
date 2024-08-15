@@ -11,6 +11,7 @@ jobs:
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
+      CIBW_BUILD_VERBOSITY: 3
     steps:
       - uses: actions/checkout@v4
         with:
