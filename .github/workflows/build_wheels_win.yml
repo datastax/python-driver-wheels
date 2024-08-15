@@ -15,10 +15,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: lukka/run-vcpkg@v11
-        with:
-          vcpkgGitCommitId: 9a6da16845eca8d6ed70be416c1acbd206894c7f
-          runVcpkgInstall: true
+      - name: Install libev
+        run: vcpkg install libev
       - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
