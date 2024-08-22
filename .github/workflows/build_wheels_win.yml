@@ -12,8 +12,8 @@ jobs:
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BUILD_VERBOSITY: 3
-      CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\installed\include
-      CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\installed\lib
+      CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\installed\x64-windows\include
+      CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\installed\x64-windows\lib
     steps:
       - uses: actions/checkout@v4
         with:
