@@ -9,14 +9,20 @@ jobs:
     env:
       CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
       CIBW_SKIP: "*musllinux*"
-      CIBW_TEST_REQUIRES: pynose mock pure-sasl eventlet
+      CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
+      CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
+      CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\packages\libev_x64-windows\lib
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           submodules: true
-      - name: Build wheels
-        run: cd python-driver && pipx run cibuildwheel==2.16.2
-      - uses: actions/upload-artifact@v3
+      - name: Install libev
+        run: vcpkg install libev
+      - uses: pypa/cibuildwheel@v2.19.2
         with:
-          path: python-driver/wheelhouse/*.whl
+          package-dir: ./python-driver
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-win
+          path: ./wheelhouse/*.whl
