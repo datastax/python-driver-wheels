@@ -14,6 +14,7 @@ jobs:
       CIBW_BUILD_VERBOSITY: 3
       CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\installed\x64-windows\include
       CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\installed\x64-windows\lib
+      VCPKG_ROOT: C:\vcpkg
     steps:
       - uses: actions/checkout@v4
         with:
