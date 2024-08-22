@@ -22,7 +22,7 @@ jobs:
         run: vcpkg install --debug libev
       - name: List contents of install directory
         run: |
-	  dir /s /b C:\vcpkg\packages\libev_x64-windows
+          dir /s /b C:\vcpkg\packages\libev_x64-windows
       - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
