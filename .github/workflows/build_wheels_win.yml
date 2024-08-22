@@ -7,11 +7,10 @@ jobs:
     name: Build wheels on windows-2022
     runs-on: windows-2022
     env:
-      CIBW_BUILD: cp38-* cp312-*
+      CIBW_BUILD: cp38-* cp39-* cp310-* cp311-* cp312-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
-      CIBW_BUILD_VERBOSITY: 3
       CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
       CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\packages\libev_x64-windows\lib
     steps:
@@ -19,10 +18,7 @@ jobs:
         with:
           submodules: true
       - name: Install libev
-        run: vcpkg install --debug libev
-      - name: List contents of install directory
-        run: |
-          Get-ChildItem -Path C:\vcpkg\packages\libev_x64-windows -Recurse
+        run: vcpkg install libev
       - uses: pypa/cibuildwheel@v2.19.2
         with:
           package-dir: ./python-driver
