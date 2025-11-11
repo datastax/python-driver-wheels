@@ -15,7 +15,7 @@ jobs:
       CIBW_BEFORE_ALL: yum install -y libev libev-devel
       CIBW_ENVIRONMENT: CFLAGS='-s'
       CIBW_BUILD_VERBOSITY: 3
-      CIBW_DEPENDENCY_VERSIONS: ./python-driver/cibuildwheel-requirements.txt
+      CIBW_DEPENDENCY_VERSIONS: "packages: cython>=3.0"
     steps:
       - uses: actions/checkout@v4
         with:
