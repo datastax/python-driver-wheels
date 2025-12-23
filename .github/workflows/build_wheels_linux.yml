@@ -13,7 +13,7 @@ jobs:
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: yum install -y libev libev-devel
-      CIBW_ENVIRONMENT: CFLAGS=''
+      CIBW_ENVIRONMENT: CFLAGS='-s'
       CIBW_BUILD_VERBOSITY: 3
     steps:
       - uses: actions/checkout@v4
