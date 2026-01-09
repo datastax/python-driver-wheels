@@ -8,12 +8,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # macos-13 == Intel, macos-14 == ARM
-        os: [macos-13, macos-14]
+        # macos-15-intel == Intel, macos-14 == ARM
+        # macos-15-intel is the last x86_64 runner (https://github.com/actions/runner-images/issues/13046)
+        os: [macos-15-intel, macos-14]
         min_version: [10.9, 11.0]
         exclude:
           # Always try for the maximal min version for x86_64 builds
-          - os: macos-13
+          - os: macos-15-intel
             min_version: 11.0
           # ARM builds require an OSX version of at least 11.0
           - os: macos-14
