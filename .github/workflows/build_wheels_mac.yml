@@ -21,7 +21,7 @@ jobs:
             min_version: 10.9
     env:
       CIBW_ENVIRONMENT: CFLAGS="-mmacosx-version-min=${{ matrix.min_version }}"
-      CIBW_BUILD: cp39-* cp310-* cp311-* cp312-* cp313-*
+      CIBW_BUILD: cp310-* cp311-* cp312-* cp313-* cp314-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
