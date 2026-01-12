@@ -11,14 +11,18 @@ jobs:
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
-      CASS_DRIVER_LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
-      CASS_DRIVER_LIBEV_LIBS: C:\vcpkg\packages\libev_x64-windows\lib
+      LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
+      LIBEV_LIBS: C:\vcpkg\packages\libev_x64-windows\lib
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Install libev
         run: vcpkg install libev
+      - name: Update pyproject.toml to find libev
+        run: |
+          pip install toml
+	  python scripts/update-pyproject.py python-driver/pyproject.toml "${{ env.LIBEV_INCLUDES }}" "${{ env.LIBEV_LIBS }}"
       - uses: pypa/cibuildwheel@v3.2.1
         with:
           package-dir: ./python-driver
