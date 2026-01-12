@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-2022
     env:
       CIBW_BUILD: cp310-* cp311-* cp312-* cp313-* cp314-*
-      CIBW_SKIP: "*musllinux*" "*win32"
+      CIBW_SKIP: "*musllinux* *win32"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
