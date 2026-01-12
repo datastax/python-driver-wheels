@@ -22,7 +22,7 @@ jobs:
       - name: Update pyproject.toml to find libev
         run: |
           pip install toml
-	  python scripts/update-pyproject.py python-driver/pyproject.toml "${{ env.LIBEV_INCLUDES }}" "${{ env.LIBEV_LIBS }}"
+          python scripts/update-pyproject.py python-driver/pyproject.toml "${{ env.LIBEV_INCLUDES }}" "${{ env.LIBEV_LIBS }}"
       - uses: pypa/cibuildwheel@v3.2.1
         with:
           package-dir: ./python-driver
