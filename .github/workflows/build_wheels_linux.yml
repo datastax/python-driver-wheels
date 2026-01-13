@@ -7,13 +7,14 @@ jobs:
     name: Build wheels on ubuntu-22.04
     runs-on: ubuntu-22.04
     env:
-      CIBW_BUILD: cp39-* cp310-* cp311-* cp312-* cp313-*
+      CIBW_BUILD: cp310-* cp311-* cp312-* cp313-* cp314-*
       CIBW_SKIP: "*musllinux*"
       CIBW_ARCHS_LINUX: x86_64 aarch64
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
       CIBW_BEFORE_ALL: yum install -y libev libev-devel
       CIBW_ENVIRONMENT: CFLAGS='-s -fno-strict-overflow -Wsign-compare -DNDEBUG -g -O3 -Wall'
+      CIBW_BUILD_VERBOSITY: 3
     steps:
       - uses: actions/checkout@v4
         with:
