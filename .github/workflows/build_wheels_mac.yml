@@ -21,7 +21,7 @@ jobs:
             min_version: 10.9
     env:
       CIBW_ENVIRONMENT: CFLAGS="-mmacosx-version-min=${{ matrix.min_version }}"
-      CIBW_BUILD: cp310-* cp311-* cp312-* cp313-* cp314-*
+      CIBW_BUILD: cp311-* cp312-* cp313-* cp314-* cp315-*
       CIBW_SKIP: "*musllinux*"
       CIBW_TEST_REQUIRES: pytest mock pure-sasl eventlet
       CIBW_TEST_COMMAND: echo "wheel is installed"
@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: pypa/cibuildwheel@v3.2.1
+      - uses: pypa/cibuildwheel@v4.3.5
         with:
           package-dir: ./python-driver
       - uses: actions/upload-artifact@v4
