@@ -13,6 +13,7 @@ jobs:
       CIBW_TEST_COMMAND: echo "wheel is installed"
       LIBEV_INCLUDES: C:\vcpkg\packages\libev_x64-windows\include\libev
       LIBEV_LIBS: C:\vcpkg\packages\libev_x64-windows\lib
+      CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: 'delvewheel repair -w {dest_dir} --add-path "C:/vcpkg/installed/x64-windows/bin" {wheel}'
     steps:
       - uses: actions/checkout@v4
         with:
